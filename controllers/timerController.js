@@ -29,11 +29,13 @@ exports.timerUpgrade = async(req, res) => {
     if(!existTimer){
       return res.status(404).json({msg: "There was a Error"})
     }
-  
+
+  console.log("Pm ", existTimer.longBreak )
+
     const newTime = {}
-    newTime.pomodoro = pomodoro || 25
-    newTime.longBreak = longBreak || 15
-    newTime.shortBreak = shortBreak || 25
+    newTime.pomodoro = pomodoro || existTimer.pomodoro || 25
+    newTime.longBreak = longBreak || existTimer.longBreak || 15
+    newTime.shortBreak = shortBreak || existTimer.shortBreak || 5
 
     console.log("new Data ",newTime )
     console.log("id ", req.params.id)

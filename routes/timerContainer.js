@@ -7,7 +7,7 @@ router.post("/",
 timerController.timerC
 )
 router.put("/:id",
-auth,
+/* auth, */
 timerController.timerUpgrade
 )
 
