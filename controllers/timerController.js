@@ -7,7 +7,9 @@ exports.timerC = async(req, res) => {
   const Data = {
     "pomodoro": 25,
     "longBreak": 15,
-    "shortBreak": 5
+    "shortBreak": 5,
+    "backgroundAll": "#fa6e6c",
+    "Text": "Roboto"
   }
   try {
      const timer = new Timer(Data)
@@ -29,8 +31,7 @@ exports.timerUpgrade = async(req, res) => {
     if(!existTimer){
       return res.status(404).json({msg: "There was a Error"})
     }
-
-  console.log("Pm ", existTimer.longBreak )
+    console.log("Req.body ",req.body)
 
     const newTime = {}
     newTime.pomodoro = pomodoro || existTimer.pomodoro || 25
@@ -38,7 +39,6 @@ exports.timerUpgrade = async(req, res) => {
     newTime.shortBreak = shortBreak || existTimer.shortBreak || 5
 
     console.log("new Data ",newTime )
-    console.log("id ", req.params.id)
     let timer;
 
     timer = await Timer.findOneAndUpdate({_id: req.params.id}, newTime, {new: true})

@@ -13,6 +13,14 @@ const TimerSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  backgroundAll:{
+    type: String,
+    required: true,
+  },
+  Text:{
+    type: String,
+    required: true,
+  },
   userCreator: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
